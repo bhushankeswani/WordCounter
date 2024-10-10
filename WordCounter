@@ -1,0 +1,54 @@
+package com.bhushan;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class WordCounter {
+	
+	
+	    public static void main(String[] args) {
+	        
+	        JFrame frame = new JFrame("Word Count Application");
+	        frame.setSize(400, 300);
+	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        frame.setLayout(new FlowLayout());
+
+	       
+	        JTextArea textArea = new JTextArea(10, 30);
+	        JScrollPane scrollPane = new JScrollPane(textArea); // Add scroll if text exceeds area
+
+	       
+	        JButton countButton = new JButton("Count Words");
+
+	       
+	        JLabel resultLabel = new JLabel("Word Count: 0");
+
+	        
+	        frame.add(scrollPane);
+	        frame.add(countButton);
+	        frame.add(resultLabel);
+
+	      
+	        countButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	         
+	                String text = textArea.getText();
+
+	             
+	                String[] words = text.trim().split("\\s+");
+
+	                
+	                if (text.trim().isEmpty()) {
+	                    resultLabel.setText("Word Count: 0");
+	                } else {
+	                    resultLabel.setText("Word Count: " + words.length);
+	                }
+	            }
+	        });
+
+	   
+	        frame.setVisible(true);
+	    }
+	}
